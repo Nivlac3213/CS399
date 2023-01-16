@@ -10,10 +10,21 @@ def most_freq_word(list_of_words: [str]) -> (str, int):
     :param list_of_words: list of words
     :return: most freq word, number of times the word is in the list
     """
+
+    highest_occurrence = 0
+    freq_word = ''
     unique_word_set = set(list_of_words)
+    """
     freq_word = max(unique_word_set, key=list_of_words.count)
-    occurrence = list_of_words.count(freq_word)
-    return freq_word, occurrence
+    highest_occurrence = list_of_words.count(freq_word)
+    """
+    for word in unique_word_set:
+        occurrence = list_of_words.count(word)
+        if occurrence > highest_occurrence:
+            highest_occurrence = occurrence
+            freq_word = word
+
+    return freq_word, highest_occurrence
 
 
 try:

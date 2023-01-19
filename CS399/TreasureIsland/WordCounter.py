@@ -20,3 +20,4 @@ ProcessTime = process_time() - t0
 ### Print Final Results ###
 print(f"Most frequent word is '{mfw}' found {originalTextlst.count(mfw)} times")
 print(f"Took {ProcessTime} seconds to process")
+

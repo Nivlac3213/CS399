@@ -19,3 +19,4 @@ reduce_result = reduce(lambda num1, num2: num1 * num2, my_numbers)
 print(map_result)
 print(filter_result)
 print(reduce_result)
+

@@ -61,6 +61,15 @@ def optimized_prime_generator():
                 yield n
 
 
+def sieve_of_eratosthenes(n):
+    """
+    Generates Prime Numbers using the Sieve of Eratosthenes
+    :param n: int upper bound
+    :return: int prime numbers
+    """
+    pass
+
+
 if __name__ =='__main__':
 
     """
@@ -88,5 +97,5 @@ if __name__ =='__main__':
     dt1 = process_time() - t1
 
     # Print Processing Times
-    # print(f"Processing: {dt0} seconds")
+    print(f"Processing: {dt0} seconds")
     print(f"Optimized Processing: {dt1} seconds")

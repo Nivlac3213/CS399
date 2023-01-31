@@ -78,7 +78,8 @@ if __name__ == '__main__':
     #
     # Testing the Optimized Generator
     #
-    known_prime = (100_000, 1_299_709)  # Tuple representing a known prime number
+    #known_prime = (100_000, 1_299_709)  # Tuple representing a known prime number
+    known_prime = (1000000, 15485863)
     t2 = process_time()
 
     # 'primes' encapsulates all prime numbers

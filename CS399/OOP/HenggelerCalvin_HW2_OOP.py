@@ -82,9 +82,9 @@ class Student:
 
     # ---  Methods  --- #
     def __init__(self, name: str, student_id: int):
-        self.__class__.student_name = name
-        self.__class__.student_id = student_id
-        self.__class__.marks = []
+        self.student_name = name
+        self.student_id = student_id
+        self.marks = []
 
     def add_grade(self, new_mark: Marks):
         """
@@ -92,7 +92,7 @@ class Student:
         :param new_mark: Marks Object
         :return:
         """
-        self.__class__.marks.append(new_mark)
+        self.marks.append(new_mark)
 
     def print_grades(self):
         """

@@ -1,142 +1,198 @@
 """
-Author: Calvin Henggerl
-Assignment Exam 1: Make a program that simulates the Chicago and Douvle-Roll game
-CS-399 Intermediate Python
-2/23/2023
+Author:     Calvin Henggeler
+Project:    Exam 1
+Course:     CS-399 Intermediate Python
+Date:       2/23/2023
 
-No AI was used to make this code
+Disclaimers:
+            No AI Tools were used to make this code
+
+Description:
+            Make an OOP that simulates the Chicago and Double-Roll Games
+
+*** Thank you for letting us have more time to submit more completed code.***
+
 """
 
+# =========================================================================== #
+#                                   Imports                                   #
+# =========================================================================== #
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from random import randint
 
 
-class Dice:
-    value: int
+# =========================================================================== #
+#                                   Classes                                   #
+# =========================================================================== #
 
-    def roll(self):
-        self.value = randint(1, 7)
-        return self.value
-
-
+# ------------------------------- Player Class ------------------------------ #
 @dataclass
 class Player:
     name: str
 
-    def __init__(self, name: str):
+    def __init__(self, name: str) -> None:
         self.name = name    # set the player name
         self.score = 0      # init the player score to 0
 
-    def __str__(self) -> str:
-        return self.name
 
-
+# -------------------------------- Game Class ------------------------------- #
 class Game(ABC):
+    """
+    Game baseclass. Chicago and DoubleRoll inherit from here
+    """
+    num_games_played = 0
 
     def __init__(self, players: [Player]) -> None:
         self.players = players      # make list of players
         self.champs = []            # init list of champs as empty
-        self.dice1 = Dice()         # create Dice as attributes the game
-        self.dice2 = Dice()
 
     def champions(self) -> [Player]:
-        """:return: list of player(s), with the highest score, or an empty list, if nobody scored."""
+        """
+        :return: list of player(s), with the highest score, or an empty list,
+                if nobody scored.
+        """
 
+        # form a list of the scores (LIST COMPREHENSION)
         scores = []
-        for player in self.players:
-            scores.append(player.score)
+        [scores.append(_player.score) for _player in self.players]
 
-        return filter(lambda x: x.score == max(scores), self.players )
+        # if nobody scored, return empty list with no winners
+        if max(scores) == 0:
+            return []
+
+        # Filter player list for high scores, store is champs for later
+        self.champs = list(filter(lambda x: x.score == max(scores), self.players))
+        return self.champs
 
     @abstractmethod
     def play(self) -> [Player]:
-        """ Child Classes must implement this """
+        """ Child classes must implement this """
         pass
 
 
+# ------------------------------ Chicago Class ------------------------------ #
 class Chicago(Game):
-
+    """
+    Model of the Chicago Dice Game
+    """
     _rounds = range(1, 12)
-    num_games_played = 0
 
     def __init__(self, players: [Player]) -> None:
         super().__init__(players)
-        self.__class__.num_games_played = 0
 
     def play(self) -> [Player]:
-
+        """
+        Plays the game
+        :return: List of winners using the champions method
+        """
         # Increment the number of games played
-        self.num_games_played += 1
+        self.__class__.num_games_played += 1
+
+        # Reset scores of all the players
+        for _player in self.players:
+            _player.score = 0
 
         # go through the rounds
         for round_num in self._rounds:
 
             # Each player gets a turn
-            for player in self.players:
+            for _player in self.players:
 
                 # Player rolls both dice
-                turn_score = self.dice1.roll() + self.dice2.roll()
+                turn_score = randint(1, 7) + randint(1, 7)
 
                 # if the sum of the dice == target combination, add to player score
                 if turn_score == round_num + 1:
-                    player.score += turn_score
+                    _player.score += turn_score
 
-        # use champions method to return lit of winners
+        # use champions method to return list of winners
         return self.champions()
 
 
+# ----------------------------- DoubleRoll Class ---------------------------- #
 class DoubleRoll(Game):
-
+    """
+    Models the DoubleRoll Game, a variant of Chicago
+    """
     _rounds = range(1, 12)
 
     def __init__(self, players: [Player]) -> None:
         super().__init__(players)
 
-
     def play(self) -> [Player]:
-        pass
+        """
+        Plays the game
+        :return: List of winners using the champions method
+        """
+        # Increment the number of games played
+        self.__class__.num_games_played += 1
+
+        # Reset scores of all the players
+        for _ in self.players:
+            _.score = 0
+
+        # go through the rounds
+        for round_num in self._rounds:
+
+            # Each player gets a turn
+            for _player in self.players:
+
+                # Player rolls both dice
+                die1 = randint(1, 7)
+                die2 = randint(1, 7)
+                turn_score = die1 + die2
+
+                # if the sum of the dice == target combination, add to player score
+                if turn_score == round_num + 1:
+                    _player.score += turn_score
+                else:  # This is the chance to re roll for points
+                    # re-rolL one die
+                    turn_score = die1 + randint(1, 6)
+                    if turn_score == round_num + 1:
+                        _player.score += turn_score
+
+        # use champions method to return list of winners
+        return self.champions()
 
 
+# =========================================================================== #
+#                              Execution/Test Code                            #
+# =========================================================================== #
 if __name__ == "__main__":
 
-    """Test Dice"""
-    dice1 = Dice()
-    for _ in range(1,7):
-        print((dice1.roll()))
-    print("Dice Test: Passed")
-
-
+    # List of Contestants
     contestants = [
         Player("Ricky Bell"),
         Player("Michael Bivins"),
         Player("Bobby Brown"),
         Player("Ronnie DeVoe"),
         Player("Johnny Gill"),
-        Player("Ralph Tresvant")
+        Player("Ralph Tresvant"),
+        Player("Calvin Henggeler"),
+        Player("Carl the Cat")
     ]
 
-    """ test sub class attributes"""
-    chicago = Chicago(contestants)
-    chicago.play()
-    print(chicago.__dict__)
-
-    for player in chicago.players:
-        print(f"{player.name} with score {player.score}")
-
-    double_roll = DoubleRoll(contestants)
-    print(double_roll.__dict__)
-
-
-
-
-
-    """
+    # Play both games until there are more than 1 winner in each games
     for game in (Chicago(contestants), DoubleRoll(contestants)):
         while True:
-            pass
-            #winners = game.play()              # play the game
-            #game_cahmps = game.champions()     # get the list of champions
-                                                # print the list of Champions
+            winners = game.play()               # play the game
 
-    """
+            # Check for more than 1 winner
+            if len(winners) > 1:
+                print(f"\nAfter {game.num_games_played} games of {str(game.__class__.__name__)} played,"
+                      f" a single game had multiple winners:")
+
+                # Print the winners
+                inline_str = "Winners: "
+                for champ in game.champs:
+                    inline_str += f"{champ.name}, Score: {champ.score}  "
+                print(inline_str)
+
+                # Show results of the game
+                print("Game Results:")
+                for player in game.players:
+                    print(f"{player.name.ljust(25)} --> {player.score}")
+
+                # break from the loop
+                break

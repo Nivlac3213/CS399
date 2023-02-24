@@ -14,7 +14,8 @@ Author: Calvin Henggeler
 # however a child class can override a method of a parent class
 
 from random import randint
-
+from dataclasses import dataclass
+from abc import ABC, abstractmethod
 
 class Sensor:
     """ Sensor Class for generic Sensor """
@@ -69,6 +70,35 @@ class HumiditySensor(Sensor):
         return None
 
 
+@dataclass
+class ClassForData:
+    """
+    This is an Example of a Data Class
+    """
+    # this class does not beed a __init__ to be called as if it had one
+    data1: int
+    data2: str
+
+"""
+Using abstract methods
+"""
+class Shape:
+    """
+    This Class cannot be instantiated because it has an abstract method
+    """
+    @abstractmethod
+    def Area(self) -> float:
+        """
+        :return:
+            float: surface Area of sharpe
+        """
+
+class square(Shape):
+    side = 2
+
+    def Area(self) -> float:
+        return self.side**2
+
 if __name__ == "__main__":
     kitchen_ts = TempSensor("kitchen", "F")
     kitchen_hs = HumiditySensor("kitchen")
@@ -79,3 +109,5 @@ if __name__ == "__main__":
             reading = s.value()
             if reading:
                 print(f"{s.req_counter} .. {s} : {reading}")
+
+

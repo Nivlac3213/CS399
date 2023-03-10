@@ -127,6 +127,7 @@ def my_logger(original_function):
         return original_function(*args, **kwargs)
     return wrapper
 
+
 # Timing Decorator
 def my_timer(original_function):
     import time
@@ -138,4 +139,30 @@ def my_timer(original_function):
         print(f'{original_function.__name__} ran in: {t2} sec')
         return result
     return wrapper
+
+
+"""
+Built in decorators
+
+There are built in decorators for caching results
+Cahing techniques:
+FIFO
+LIFO
+LRU -> least frequenty used
+MRU -> rmost requenty used
+
+finn.io for stock service
+
+"""
+from functools import lru_cache
+
+
+# Can also use @cache
+@lru_cache(maxsize=128)
+def fibo(n: int) -> int:
+    """
+    :return: n-th fibonacci number
+    """
+    return n if n<2 else fibo(n - 1) + fibo(n - 2)
+
 

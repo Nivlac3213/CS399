@@ -1,7 +1,7 @@
 """
 Author:     Calvin Henggeler
 Date:       March 3, 2023
-Course:     CS399 Intermediate Python
+Course:     src Intermediate Python
 
 Description:
             This python file is made to complete Homework 3 on the topic of

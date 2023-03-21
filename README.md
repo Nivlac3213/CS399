@@ -1,4 +1,6 @@
-# Author: Calvin Henggeler
 # CS 399 Intermediate Python
-# Embry-Riddle Aeronautical University - Prescott
-# Spring 2023 
+Author: Calvin Henggeler
+Embry-Riddle Aeronautical University - Prescott
+Spring 2023 
+
+During my undergrad for a BS Computer Engineer

@@ -28,7 +28,7 @@ of unique values.
 The top tests are for the lower stuff while the bottom tests are built off of the methods the top tests test_SUSlist_HW.
 """
 import pytest
-from suslist import SUSList
+from src.TDD.SUSlist_HW.suslist_mitchell import SUSList
 
 
 @pytest.fixture

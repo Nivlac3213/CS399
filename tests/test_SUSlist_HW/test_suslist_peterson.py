@@ -5,7 +5,7 @@ Date: 27 March 2023
 """
 
 import pytest
-from suslist import SUSList
+from src.TDD.SUSlist_HW.suslist_peterson import SUSList
 
 
 @pytest.fixture

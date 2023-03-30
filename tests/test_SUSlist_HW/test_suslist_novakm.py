@@ -1,6 +1,5 @@
 import pytest
-from suslist_novakm import SUSList
-
+from src.TDD.SUSlist_HW.suslist_novakm import SUSList
 
 def test_init():
     # For none

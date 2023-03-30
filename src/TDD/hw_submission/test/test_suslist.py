@@ -19,7 +19,7 @@ Sources:
 # =========================================================================== #
 import pytest
 
-from src.TDD.HenggelerCalvin_TDD_HW import SUSList
+from src.HenggelerCalvin_TDD_HW import SUSList
 
 
 # =========================================================================== #

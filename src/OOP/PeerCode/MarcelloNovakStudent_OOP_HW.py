@@ -52,5 +52,5 @@ students = [student1, student2, student3, student4]
 for student in students:
     print(student.name, student.marks)
 
-# I'm also not sure how to test this program, but I iterated over
+# I'm also not sure how to test_SUSlist_HW this program, but I iterated over
 # the list and provided the output described in canvas? Idk. Sorry.

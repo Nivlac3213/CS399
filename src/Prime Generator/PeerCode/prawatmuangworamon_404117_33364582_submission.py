@@ -28,7 +28,7 @@ def prime_generator():
                 break
                 # https://sciencing.com/calculate-coprime-6921150.html
                 # If numbers have a factor pair, one of the factors must be equal to or less than the square root.
-                # So, if you test all the numbers up to the square root, you can rest assured that the number is prime.
+                # So, if you test_SUSlist_HW all the numbers up to the square root, you can rest assured that the number is prime.
 
         if is_prime:
             prime_cache.append(num)

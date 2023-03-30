@@ -6,10 +6,10 @@ Test Driven Development
 Iterative and repeatable process
 1) Consider a code module to be written
 2) Write the Test First to initially fail
-2) Write Minimal code to pass the test
-3) Run Code and test functionality
+2) Write Minimal code to pass the test_SUSlist_HW
+3) Run Code and test_SUSlist_HW functionality
 
-New test per new feature
+New test_SUSlist_HW per new feature
 
 Doctest v Pytest
 Fixtures

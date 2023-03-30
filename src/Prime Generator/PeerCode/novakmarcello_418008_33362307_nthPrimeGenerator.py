@@ -1,6 +1,6 @@
 # Disclaimer: GitHub Copilot was used for this program
 # Created by Marcello Novak, 1/29/2023, CS 399
-# Description: Tests if a given nth number is prime, and equal to a test value
+# Description: Tests if a given nth number is prime, and equal to a test_SUSlist_HW value
 
 # Import square root for prime function
 # Import process time for timing
@@ -29,7 +29,7 @@ def primeGenerator():
 
 if __name__ == '__main__':
     # All the below code was taken from the "Programming Assignment Clarification" discussion on Canvas
-    # Just a test to see if the nth prime number is correct, and how long it takes to run
+    # Just a test_SUSlist_HW to see if the nth prime number is correct, and how long it takes to run
     # Testing if the nth number is prime (1,000,000th prime number is 15485863)
     knownPrime = (1000000, 15485863)
 

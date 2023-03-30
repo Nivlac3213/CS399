@@ -1,7 +1,7 @@
 """
 Author:     Calvin Henggeler
 Date:       February 2, 2023
-Course:     src Intermediate Python
+Course:     SUSlist_HW Intermediate Python
 
 Description:
             This python file is made to complete Homework 2 on the topic of
@@ -155,7 +155,7 @@ if __name__ == '__main__':
 
     mark1 = Marks(course="CEC420", percent=randint(1, 100))   # These are not real
     mark2 = Marks(course="EE225", percent=randint(1, 100))
-    mark3 = Marks(course="src", percent=randint(1, 100))
+    mark3 = Marks(course="SUSlist_HW", percent=randint(1, 100))
     StudentY.add_grade(mark1)
     StudentY.add_grade(mark2)
     StudentY.add_grade(mark3)
